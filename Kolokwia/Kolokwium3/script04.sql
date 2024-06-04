@@ -2,23 +2,23 @@
 use EduCourses;
 go
 
--- Indeks dla czêstego ³¹czenia tabel users_user i course_enrollment:
+-- Indeks dla czestego laczenia tabel Users i Enrollments:
 create index IdxUsersEnrollmentsUserID on Enrollments(UserID);
 create index IdxUserEnrollmentsCourseID on Enrollments(CourseID);
 go
 
--- Unikalnoœæ dla email w tabeli users_user:
+-- Unikalnosc dla Email w tabeli Users:
 create unique index IdxUsersEmailUnique on Users(Email);
 go
 
--- Indeks dla czêstego wyszukiwania danych wed³ug daty rozpoczêcia i zakoñczenia kursu w tabeli course:
+-- Indeks dla czestego wyszukiwania danych wedlug daty rozpoczecia i zakonczenia kursu w tabeli Courses:
 create index IdxCoursesDates on Courses(DateStart, DateEnd);
 go
 
--- Z³o¿ony indeks w tabeli course_enrollment:
+-- Zlozony indeks w tabeli Enrollments:
 create index IdxEnrollmentsUserCourse on Enrollments(UserID, CourseID);
 go
 
--- Indeks dla filtracji u¿ytkowników wed³ug imienia i nazwiska w tabeli users_user:
+-- Indeks dla filtracji uzytkownikow wedlug imienia i nazwiska w tabeli Users:
 create index IdxUsersName on Users(FirstName, LastName);
 go
