@@ -32,7 +32,7 @@
     - Wstawione zostają co najmniej po 2 rekordy do każdej tabeli w utworzonej bazie.
 
 ## Zadanie 2:
-- Przygotować skrypt `script04.sql`, w którym dodawane są indeksy dla następujących wymagań:
+- Przygotować skrypt `script03.sql`, w którym dodawane są indeksy dla następujących wymagań:
     - Częste łączenie tabel Hotels i HotelRooms.
     - Unikalność HotelName.
     - Filtracja pokoi według liczby gości.
