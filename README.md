@@ -1,5 +1,25 @@
-# Databases:
+# Bazy Danych:
 
-This repository contains scripts and files developed as part of the Database Course during the summer semester of 2024. The materials included here are the result of various assignments, projects, and exercises completed throughout the course.
+To repozytorium jest zbiorem rozwiązań zadań rozwiązywanych podczas laboratoriów oraz kolokwiów z przedmiotu "_Bazy Danych_", realizowanego w letnim semestrze roku akademickiego 2023-2024.
 
-Feel free to explore the repository and use the materials as a reference for your own learning and projects. Contributions and suggestions are welcome!
+Zadania zostały rozwiązane przy pomocy [Transact-SQL](https://pl.wikipedia.org/wiki/Transact-SQL), języka [Python](https://www.python.org/) oraz biblioteki [pymssql](https://www.pymssql.org/).
+
+Zawartość repozytorium:
+
+- Laboratoria:
+  - Lab04: [Ćwiczenie zapytań na bazie Northwind - zapytania SELECT](https://github.com/adamgracikowski/Databases/tree/main/Laboratoria/Lab04)
+  - Lab05: [Ćwiczenie zapytań na bazie Northwind - grupowanie i funkcje okna](https://github.com/adamgracikowski/Databases/tree/main/Laboratoria/Lab05)
+  - Lab06: [Ćwiczenie SQL DLL na bazie Northwind](https://github.com/adamgracikowski/Databases/tree/main/Laboratoria/Lab06)
+  - Lab07: [Procedury składowane](https://github.com/adamgracikowski/Databases/tree/main/Laboratoria/Lab07)
+- Kolokwia:
+  - Kolokwium1: Projektowanie modeli relacyjnych baz danych oraz tworzenia zapytań `SELECT`.
+    - [Grupa1](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium1/Grupa1)
+    - [Grupa2](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium1/Grupa2)
+    - [Grupa3](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium1/Grupa3)
+  - Kolokwium2: SQL DDL oraz tworzenie aplikacji klienckiej przy pomocy języka Python. -
+    - [Grupa1](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium2/Grupa1)
+    - [Grupa2](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium2/Grupa2)
+  - Kolokwium3: SQL DDL, indeksy oraz procedury składowane.
+    - [Grupa1](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium3/Grupa1)
+    - [Grupa2](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium3/Grupa2)
+    - [Grupa3](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium3/Grupa3)
