@@ -1,6 +1,6 @@
 # Bazy Danych:
 
-To repozytorium jest zbiorem rozwiązań zadań rozwiązywanych podczas laboratoriów oraz kolokwiów z przedmiotu "_Bazy Danych_", realizowanego w letnim semestrze roku akademickiego 2023-2024.
+To repozytorium jest zbiorem zadań rozwiązywanych podczas laboratoriów oraz kolokwiów z przedmiotu "_Bazy Danych_", realizowanego w letnim semestrze roku akademickiego 2023-2024.
 
 Zadania zostały rozwiązane przy pomocy [Transact-SQL](https://pl.wikipedia.org/wiki/Transact-SQL), języka [Python](https://www.python.org/) oraz biblioteki [pymssql](https://www.pymssql.org/).
 
