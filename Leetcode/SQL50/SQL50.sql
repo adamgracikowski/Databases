@@ -100,3 +100,39 @@ on a1.machine_id = a2.machine_id
     and a1.activity_type = 'end'
     and a2.activity_type = 'start'
 group by a1.machine_id
+
+-- 11) 577. Employee Bonus:
+-- https://leetcode.com/problems/employee-bonus
+
+select
+    e.name,
+    b.bonus
+from Employee e
+left join Bonus b
+on e.empId = b.empId
+where coalesce(b.bonus, 0) < 1000
+
+-- 12) 1280. Students and Examinations:
+-- https://leetcode.com/problems/students-and-examinations
+
+select 
+    st.student_id,
+    st.student_name,
+    su.subject_name,
+    (
+        select count(*) from Examinations e
+        where e.student_id = st.student_id
+            and e.subject_name = su.subject_name
+    ) as attended_exams
+from Subjects su, Students st
+order by st.student_id, su.subject_name
+
+-- 13) 570. Managers with at Least 5 Direct Reports
+-- https://leetcode.com/problems/managers-with-at-least-5-direct-reports
+
+select e2.name from Employee e1, Employee e2
+where e1.managerId = e2.id
+group by e2.id, e2.name
+having count(*) > 4
+
+-- 14)
