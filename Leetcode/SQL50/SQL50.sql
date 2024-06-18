@@ -135,4 +135,78 @@ where e1.managerId = e2.id
 group by e2.id, e2.name
 having count(*) > 4
 
--- 14)
+-- 14) 1934. Confirmation Rate:
+-- https://leetcode.com/problems/confirmation-rate
+
+with cte (user_id, confirmed, total) as (
+    select 
+        s.user_id,
+        sum(case when c.action = 'confirmed' then 1 else 0 end) as confirmed,
+        count(*) as total
+    from signups s
+    left join confirmations c
+    on s.user_id = c.user_id
+    group by s.user_id
+)
+select 
+    user_id,
+    case 
+        when total = 0 then 0 
+        else round(cast(confirmed as float) / total, 2) 
+    end as confirmation_rate 
+from cte;
+
+-- 15) 620. Not Boring Movies:
+-- https://leetcode.com/problems/not-boring-movies
+
+select * from cinema
+where id % 2 = 1 
+	and description <> 'boring'
+order by rating desc
+
+-- 16) 1251. Average Selling Price:
+-- https://leetcode.com/problems/average-selling-price
+
+-- I sposób:
+
+with cte (product_id, total_value, total_units) as (
+    select 
+        p.product_id,
+        sum(p.price * us.units) as total_value,
+        sum(us.units) as total_units
+    from Prices p
+    left join UnitsSold us
+    on p.product_id = us.product_id
+        and p.start_date <= us.purchase_date
+        and us.purchase_date <= p.end_date
+    group by p.product_id
+)
+select
+    product_id,
+    case 
+        when total_units = 0 or total_units is null then 0 
+        else round(cast(total_value as float) / total_units, 2) 
+    end as average_price
+from cte
+
+-- II sposób:
+
+select 
+	p.product_id, 
+	ifnull(round(sum(us.units * p.price) / sum(us.units), 2), 0) as average_price
+from Prices p
+left join UnitsSold us
+on p.product_id = u.product_id 
+	and u.purchase_date between start_date and end_date
+group by product_id;
+
+-- 17) 1075. Project Employees I:
+-- https://leetcode.com/problems/project-employees-i
+
+select 
+    project_id, 
+    round(avg(experience_years * 1.0), 2) as average_years 
+from Project p 
+inner join Employee e 
+on p.employee_id = e.employee_id 
+group by project_id
