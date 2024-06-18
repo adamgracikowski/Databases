@@ -210,3 +210,29 @@ from Project p
 inner join Employee e 
 on p.employee_id = e.employee_id 
 group by project_id
+
+-- 18) 1633. Percentage of Users Attended a Contest:
+-- https://leetcode.com/problems/percentage-of-users-attended-a-contest
+
+declare @total int
+select @total = count(*) from Users u
+
+select 
+    r.contest_id,
+    round(100 * cast(count(*) as float) / @total, 2) as percentage
+from Register r
+left join Users u
+on r.user_id = u.user_id
+group by r.contest_id
+order by percentage desc, contest_id asc
+
+-- 19) 1211. Queries Quality and Percentage:
+-- https://leetcode.com/problems/queries-quality-and-percentage
+
+select 
+    q.query_name,
+    round(avg(cast(q.rating as float) / q.position), 2) as quality,
+    round(100.0 * sum(case when q.rating < 3 then 1 else 0 end) / count(*), 2) as poor_query_percentage 
+from Queries q
+where q.query_name is not null
+group by q.query_name
