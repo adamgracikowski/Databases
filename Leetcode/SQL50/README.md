@@ -1,5 +1,7 @@
 ### SQL 50 from [leetcode.com](https://leetcode.com/):
 
+Plik `SQL50.sql` zawiera moje rozwiązania poniższych problemów:
+
 1. [1757. Recyclable and Low Fat Products](https://leetcode.com/problems/recyclable-and-low-fat-products)
 2. [584. Find Customer Referee](https://leetcode.com/problems/find-customer-referee)
 3. [595. Big Countries](https://leetcode.com/problems/big-countries)
