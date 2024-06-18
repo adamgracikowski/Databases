@@ -23,3 +23,5 @@ Zawartość repozytorium:
     - [Grupa1](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium3/Grupa1)
     - [Grupa2](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium3/Grupa2)
     - [Grupa3](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium3/Grupa3)
+- Leetcode:
+  - SQL50: [50 essential SQL questions from basic to intermediate](https://github.com/adamgracikowski/Databases/tree/main/Leetcode/SQL50)
