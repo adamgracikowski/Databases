@@ -236,3 +236,53 @@ select
 from Queries q
 where q.query_name is not null
 group by q.query_name
+
+-- 20) 1193. Monthly Transactions I:
+-- https://leetcode.com/problems/monthly-transactions-i
+
+select 
+    concat(year(t.trans_date), '-', format(month(t.trans_date), '00')) as [month],
+    t.country,
+    count(*) as trans_count,
+    sum(case when t.state = 'approved' then 1 else 0 end) as approved_count,
+    sum(t.amount) as trans_total_amount,
+    sum(case when t.state = 'approved' then t.amount else 0 end) as approved_total_amount 
+from Transactions t
+group by year(t.trans_date), month(t.trans_date), t.country
+
+-- 21) 1174. Immediate Food Delivery II:
+-- https://leetcode.com/problems/immediate-food-delivery-ii
+
+with cte (is_immediate) as (
+    select iif(d.order_date = d.customer_pref_delivery_date, 1, 0) 
+    from Delivery d
+    where d.order_date = (
+        select min(order_date) 
+        from Delivery 
+        where d.customer_id = customer_id
+    ) 
+)
+select round(100 * avg(cast(is_immediate as float)), 2) as immediate_percentage 
+from cte
+
+-- 22) 550. Game Play Analysis IV:
+-- https://leetcode.com/problems/game-play-analysis-iv
+
+declare @total int,
+        @consecutive int
+
+select @consecutive = count(*)
+from Activity a1
+join Activity a2
+on a1.player_id = a2.player_id
+and datediff(day, a1.event_date, a2.event_date) = 1
+and a1.event_date = (
+    select min(event_date) 
+    from Activity 
+    where player_id = a1.player_id
+)
+
+select @total = count(distinct player_id) 
+from Activity
+
+select round(cast(@consecutive as float) / @total, 2) as fraction
