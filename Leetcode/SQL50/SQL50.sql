@@ -286,3 +286,68 @@ select @total = count(distinct player_id)
 from Activity
 
 select round(cast(@consecutive as float) / @total, 2) as fraction
+
+-- 23) 2356. Number of Unique Subjects Taught by Each Teacher:
+-- https://leetcode.com/problems/number-of-unique-subjects-taught-by-each-teacher
+
+select 
+    t.teacher_id,
+    count(distinct t.subject_id) as cnt
+from Teacher t
+group by t.teacher_id
+
+-- 24) 1141. User Activity for the Past 30 Days I:
+-- https://leetcode.com/problems/user-activity-for-the-past-30-days-i
+
+select 
+    a.activity_date as [day],
+    count(distinct user_id) as active_users
+from Activity a
+where a.activity_date > dateadd(day, -30, '2019-07-27') 
+    and a.activity_date <= '2019-07-27'
+group by a.activity_date
+
+-- 25) 1070. Product Sales Analysis III:
+-- https://leetcode.com/problems/product-sales-analysis-iii
+
+select
+    s.product_id,
+    s.year as first_year,
+    s.quantity,
+    s.price
+from Sales s
+where s.year = (
+    select min(year) 
+    from Sales 
+    where product_id = s.product_id
+)
+
+-- 26) 596. Classes More Than 5 Students:
+-- https://leetcode.com/problems/classes-more-than-5-students
+
+select c.class 
+from Courses c 
+group by c.class
+having count(c.student) >= 5
+
+-- 27) 1729. Find Followers Count:
+-- https://leetcode.com/problems/find-followers-count
+
+select 
+    f.user_id,
+    count(f.follower_id) AS followers_count
+from Followers f
+group by f.user_id
+order by f.user_id asc
+
+-- 28) 619. Biggest Single Number:
+-- https://leetcode.com/problems/biggest-single-number
+
+declare @result int
+
+select top 1 @result = num from MyNumbers
+group by num
+having count(*) = 1
+order by num desc
+
+select @result as num
