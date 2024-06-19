@@ -351,3 +351,143 @@ having count(*) = 1
 order by num desc
 
 select @result as num
+
+-- 29) 1045. Customers Who Bought All Products:
+-- https://leetcode.com/problems/customers-who-bought-all-products
+
+declare @total_products int
+select @total_products = count(*) from Product
+
+select
+    c.customer_id
+from Customer c
+group by c.customer_id
+having count(distinct c.product_key) = @total_products
+
+-- 30) 1731. The Number of Employees Which Report to Each Employee:
+-- https://leetcode.com/problems/the-number-of-employees-which-report-to-each-employee
+
+select 
+    e1.employee_id,
+    e1.name,
+    count(*) as reports_count,
+    round(avg(e2.age * 1.0), 0) as average_age    
+from Employees e1
+join Employees e2 on e1.employee_id = e2.reports_to
+group by e1.employee_id, e1.name
+order by e1.employee_id
+
+-- 31) 1789. Primary Department for Each Employee:
+-- https://leetcode.com/problems/primary-department-for-each-employee
+
+select
+    e.employee_id,
+    e.department_id
+from Employee e
+where e.primary_flag = 'Y'
+    or 1 = (
+        select count(*) 
+        from Employee
+        where employee_id = e.employee_id
+    )
+
+-- 32) 610. Triangle Judgement:
+-- https://leetcode.com/problems/triangle-judgement
+
+select
+    t.*,
+    case 
+        when t.x + t.y > t.z 
+            and t.x + t.z > t.y 
+            and t.y + t.z > t.x 
+        then 'Yes' 
+    else 'No' 
+    end as triangle    
+from Triangle t
+
+-- 33) 180. Consecutive Numbers:
+-- https://leetcode.com/problems/consecutive-numbers
+
+select distinct l1.num as ConsecutiveNums
+from Logs l1
+join Logs l2 on l1.id = l2.id - 1
+join Logs l3 on l1.id = l3.id - 2
+where l1.num = l2.num and l2.num = l3.num
+
+-- 34) 1164. Product Price at a Given Date:
+-- https://leetcode.com/problems/product-price-at-a-given-date
+
+declare @given_date date;
+set @given_date = '2019-08-16'
+
+-- I sposób:
+
+select distinct
+    p.product_id,
+    coalesce((
+        select top 1 new_price
+        from Products
+        where product_id = p.product_id
+          and change_date <= @given_date
+        order by change_date desc
+    ), 10) as price
+from Products p
+
+-- II sposób:
+
+declare @given_date date;
+set @given_date = '2019-08-16';
+
+select 
+    t.product_id, 
+    coalesce(p.new_price, 10) as price
+from (
+        select 
+            product_id, 
+            max(case when cast(change_date as date) <= @given_date then change_date end) as dt
+        from products
+        group by product_id
+     ) as t
+left join products p
+on p.product_id = t.product_id and t.dt = p.change_date
+
+-- 35) 1204. Last Person to Fit in the Bus:
+-- https://leetcode.com/problems/last-person-to-fit-in-the-bus
+
+with cte (person_name, cumulative_weight) as (
+    select
+        q.person_name,
+        sum(weight) over (order by q.turn)
+    from Queue q 
+)
+select top 1
+    person_name
+from cte
+where cumulative_weight <= 1000
+order by cumulative_weight desc
+
+-- 36) 1907. Count Salary Categories:
+-- https://leetcode.com/problems/count-salary-categories
+
+with cte as (
+    select
+        'Low Salary' as category,
+        sum(iif(a.income < 20000, 1, 0)) as accounts_count
+    from Accounts a 
+
+    union all
+
+    select
+        'Average Salary' as category,
+        sum(iif(a.income >= 20000 and a.income <= 50000, 1, 0)) as accounts_count
+    from Accounts a 
+
+    union all
+
+    select
+        'High Salary' as category,
+        sum(iif(a.income > 50000, 1, 0)) as accounts_count
+    from Accounts a 
+)
+select *
+from cte
