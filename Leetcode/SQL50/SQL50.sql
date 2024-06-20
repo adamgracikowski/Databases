@@ -644,3 +644,80 @@ with ranked_salaries as (
 )
 select Department, Employee, Salary from ranked_salaries
 where rank < 4
+
+-- 44) 1667. Fix Names in a Table:
+-- https://leetcode.com/problems/fix-names-in-a-table
+
+select
+    user_id,
+    concat(upper(left(name, 1)), lower(right(name, len(name) - 1))) as name
+from Users
+order by user_id
+
+-- 45) 1527. Patients With a Condition:
+-- https://leetcode.com/problems/patients-with-a-condition
+
+select * from Patients
+where conditions like 'DIAB1%'
+    or conditions like '% DIAB1%'
+
+-- 46) 196. Delete Duplicate Emails:
+-- https://leetcode.com/problems/delete-duplicate-emails
+
+with cte as (
+    select
+        id,
+        row_number() over (
+            partition by email order by id
+        ) as [counter]
+    from Person
+)
+delete from Person
+where id in (select id from cte where [counter] > 1)
+
+-- 47) 176. Second Highest Salary:
+-- https://leetcode.com/problems/second-highest-salary
+
+declare @max_salary int
+select @max_salary = max(salary) from Employee
+
+select max(salary) as SecondHighestSalary 
+from employee
+where salary != @max_salary
+
+-- 48) 1484. Group Sold Products By The Date:
+-- https://leetcode.com/problems/group-sold-products-by-the-date
+
+with cte as (
+    select distinct
+        sell_date,
+        product
+    from Activities
+)
+select
+    sell_date,
+    count(product) as num_sold,
+    string_agg(product, ',') within group (order by product) as products
+from cte
+group by sell_date
+
+-- 49) 1327. List the Products Ordered in a Period:
+-- https://leetcode.com/problems/list-the-products-ordered-in-a-period
+
+select
+    p.product_name,
+    sum(o.unit) as unit
+from Products p
+join Orders o
+on o.product_id = p.product_id
+where o.order_date >= '2020-02-01'
+    and o.order_date <= '2020-02-29'
+group by p.product_name
+having sum(o.unit) >= 100
+
+-- 50) 1517. Find Users With Valid E-Mails:
+-- https://leetcode.com/problems/find-users-with-valid-e-mails
+
+select * from Users
+where mail like '[a-zA-Z]%@leetcode.com'
+and mail not like '%[#%^$!&*()+=@]%@leetcode.com'
