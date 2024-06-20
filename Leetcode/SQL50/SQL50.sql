@@ -491,3 +491,156 @@ with cte as (
 )
 select *
 from cte
+
+-- 37) 1978. Employees Whose Manager Left the Company:
+-- https://leetcode.com/problems/employees-whose-manager-left-the-company
+
+select e1.employee_id 
+from Employees e1
+left join Employees e2
+on e1.manager_id = e2.employee_id
+where e1.manager_id is not null
+    and e2.employee_id is null
+    and e1.salary < 30000
+order by e1.employee_id
+
+-- 38) 626. Exchange Seats:
+-- https://leetcode.com/problems/exchange-seats
+
+select
+    case
+        when id % 2 = 1 then lead(id, 1, id) over (order by id asc)
+        when id % 2 = 0 then id - 1
+    end as id,
+    student
+from Seat
+order by id
+
+-- 39) 1341. Movie Rating:
+-- https://leetcode.com/problems/movie-rating
+
+with TopUser as (
+    select top 1
+        u.name as results,
+        count(*) as rating_count
+    from MovieRating mr
+    join Users u on u.user_id = mr.user_id
+    group by u.name
+    order by rating_count desc, results asc
+),
+TopMovie as (
+    select top 1
+        m.title as results,
+        avg(cast(mr.rating as decimal(10, 2))) as average_rating
+    from MovieRating mr
+    join Movies m
+    on mr.movie_id = m.movie_id
+    where mr.created_at >= '2020-02-01'
+        and mr.created_at <= '2020-02-29'
+    group by title
+    order by average_rating desc, m.title asc
+)
+select results from TopUser
+union all
+select results from TopMovie
+
+-- 40) 1321. Restaurant Growth:
+-- https://leetcode.com/problems/restaurant-growth
+
+with cte as (
+    select 
+        visited_on, 
+        sum(amount) as amount
+    from customer
+    group by visited_on
+)
+select 
+    visited_on, 
+    sum(amount) over (
+        order by visited_on 
+        rows between 6 preceding and current row
+    ) as amount, 
+    round(avg(amount*1.00) over (
+        order by visited_on 
+        rows between 6 preceding and current row
+    ), 2) as average_amount
+from cte
+order by visited_on
+offset 6 rows
+
+-- 41) 602. Friend Requests II: Who Has the Most Friends:
+-- https://leetcode.com/problems/friend-requests-ii-who-has-the-most-friends
+
+-- I sposób:
+
+with c1 as (
+    select
+        requester_id as id,
+        count(*) as num
+    from RequestAccepted
+    group by requester_id
+),
+c2 as (
+    select
+        accepter_id as id,
+        count(*) as num
+    from RequestAccepted
+    group by accepter_id
+)
+select top 1
+    coalesce(c1.id, c2.id) as id,
+    coalesce(c1.num, 0) + coalesce(c2.num, 0) as num
+from c1
+full join c2
+on c1.id = c2.id
+order by num desc
+
+-- II sposób:
+
+with cte as (
+    (select accepter_id as id, count(*) as num from RequestAccepted group by accepter_id)
+    union all
+    (select requester_id as id, count(*) as num from RequestAccepted group by requester_id)
+)
+
+select top 1 
+    id, 
+    sum(num) as num from cte
+group by id
+order by num desc
+
+-- 42) 585. Investments in 2016:
+-- https://leetcode.com/problems/investments-in-2016
+
+select 
+    round(sum(i.tiv_2016 * 1.0), 2) as tiv_2016 
+from Insurance i
+where exists (
+    select * from Insurance
+    where tiv_2015 = i.tiv_2015
+        and pid <> i.pid
+) and not exists (
+    select * from Insurance
+    where lat = i.lat
+        and lon = i.lon
+        and pid <> i.pid
+)
+
+-- 43) 185. Department Top Three Salaries:
+-- https://leetcode.com/problems/department-top-three-salaries
+
+with ranked_salaries as (
+    select 
+        d.name as Department,
+        e.name as Employee,
+        e.salary as Salary,
+        dense_rank() over (
+            partition by e.departmentId
+            order by e.salary desc
+        ) as [rank]
+    from Employee e
+    join Department d
+    on e.departmentId = d.id
+)
+select Department, Employee, Salary from ranked_salaries
+where rank < 4
