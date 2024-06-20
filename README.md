@@ -16,7 +16,7 @@ Zawartość repozytorium:
     - [Grupa1](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium1/Grupa1)
     - [Grupa2](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium1/Grupa2)
     - [Grupa3](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium1/Grupa3)
-  - Kolokwium2: SQL DDL oraz tworzenie aplikacji klienckiej przy pomocy języka Python. -
+  - Kolokwium2: SQL DDL oraz tworzenie aplikacji klienckiej przy pomocy języka `Python`.
     - [Grupa1](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium2/Grupa1)
     - [Grupa2](https://github.com/adamgracikowski/Databases/tree/main/Kolokwia/Kolokwium2/Grupa2)
   - Kolokwium3: SQL DDL, indeksy oraz procedury składowane.
