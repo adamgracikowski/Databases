@@ -99,3 +99,5 @@ Zawartość repozytorium:
     - [184. Department Highest Salary](https://leetcode.com/problems/department-highest-salary)
     - [177. Nth Highest Salary](https://leetcode.com/problems/nth-highest-salary)
   - Hard: [Hard SQL problems](https://github.com/adamgracikowski/Databases/tree/main/Leetcode/Hard)
+    - [601. Human Traffic of Stadium](https://leetcode.com/problems/human-traffic-of-stadium)
+    - [262. Trips and Users](https://leetcode.com/problems/trips-and-users)
