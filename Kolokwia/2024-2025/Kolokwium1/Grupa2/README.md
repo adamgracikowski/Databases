@@ -1,6 +1,6 @@
 # Kolokwium 1:
 
-### Zadanie 01: Tworzenie diagramu
+### Zadanie 1: Tworzenie diagramu
 
 > Celem zadania jest przygotowanie projektu tabel.
 >
@@ -20,7 +20,7 @@
 >
 > W przypadku potrzeby doprecyzowania założeń, proszę podać w odpowiedzi przyjęte dodatkowe założenia.
 
-Opis systemu:
+**Opis systemu:**
 
 1. Każdy pracownik należy do jednego działu firmy.
 2. Pracownik może być odpowiedzialny za wiele produktów, ale jeden produkt ma tylko jednego odpowiedzialnego pracownika.
@@ -31,12 +31,11 @@ Opis systemu:
 7. Dla każdego produktu zapisujemy nazwę i opis.
 8. Dla pracownika zapisujemy imię, nazwisko, telefon, dział, czy jest kierownikiem i czy obsługuje kalendarz klienta.
 
-### Zadanie 02: Zapytania SQL na bazie `Northwind`
+### Zadanie 2: Zapytania SQL na bazie `Northwind`
 
 1. Wypisz klientów, którzy kupili więcej różnych produktów w III kwartale roku 1996 niż w III kwartale roku 1997.
 2. Wypisz w porządku alfabetycznym nazwiska pracowników, którzy nadzorowali przynajmniej 2 zamówienia wysłane do Niemiec i kiedykolwiek nadzorowali zamówienie zawierające produkt którego nazwa rozpoczyna się na `si` lub `lu`.
 3. Wypisz nazwę kraju i liczbę zamówień złożonych przez klientów z każdego kraju, posortowaną według rosnącej liczby zamówień dla wszystkich klientów.
 4. Łączna liczba zamówień złożonych w kolejnych miesiącach roku 1997, wyliczona narastająco od początku roku oraz w okresie poprzedzających 2 miesięcy.
-
-- Wynik: `Month`, `TotalCountforYear`, `TotalCountForLastMonths`.
-- Do realizacji zapytania można wykorzystać widok (ang. _view_).
+   - Wynik: `Month`, `TotalCountforYear`, `TotalCountForLastMonths`.
+   - Do realizacji zapytania można wykorzystać widok (ang. _view_).

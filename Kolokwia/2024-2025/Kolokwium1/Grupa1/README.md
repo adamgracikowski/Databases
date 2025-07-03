@@ -1,6 +1,6 @@
 # Kolokwium 1:
 
-### Zadanie 01: Tworzenie diagramu
+### Zadanie 1: Tworzenie diagramu
 
 > Celem zadania jest przygotowanie projektu tabel.
 >
@@ -20,6 +20,8 @@
 >
 > W przypadku potrzeby doprecyzowania założeń, proszę podać w odpowiedzi przyjęte dodatkowe założenia.
 
+**Opis systemu:**
+
 Tworzymy projekt bazy danych do agencji zajmującej się aktorami. Agencja współpracuje z różnymi aktorami i potrzebuje systemu do śledzenia, w jakich spektaklach występują jej podopieczni oraz jakie są podstawowe informacje o tych spektaklach. System powinien umożliwiać przechowywanie i zarządzanie następującymi danymi:
 
 1. Dla każdego spektaklu, który jest w zainteresowaniu agencji, potrzebujemy znać jego tytuł oraz krótki opis oraz okres jego wystawiania, a także teatr, w którym jest wystawiany. Każdy spektakl powinien być jednoznacznie identyfikowany w systemie.
@@ -27,7 +29,7 @@ Tworzymy projekt bazy danych do agencji zajmującej się aktorami. Agencja wspó
 3. Kluczowa informacja dla agencji jest powiązanie aktorów ze spektaklami. Należy zaprojektować sposób zapisu informacji o tym, którzy aktorzy grają w których spektaklach. Trzeba uwzględnić fakt, że jeden aktor może występować w wielu różnych spektaklach, a w jednym spektaklu zazwyczaj gra wielu aktorów.
 4. Każdy spektakl powinien być sklasyfikowany według gatunku. Istnieje z góry ustalony, ograniczony zestaw gatunków (np. Dramat, Komedia, Musical, Eksperymentalny), którymi posługuje się agencja. System musi zapewnić, że każdy spektakl jest przypisany do dokładnie jednego z tych predefiniowanych gatunków i umożliwiać zarządzanie tą listą gatunków
 
-### Zadanie 02: Zapytania SQL na bazie `Northwind`
+### Zadanie 2: Zapytania SQL na bazie `Northwind`
 
 1. Lista krajów, z których pochodzą dostawcy wraz z liczbą dostawców z danego kraju.
    - Lista powinna być posortowana od kraju o największej liczbie dostawców do najmniejszej.
