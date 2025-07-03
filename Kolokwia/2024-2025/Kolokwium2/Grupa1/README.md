@@ -9,8 +9,8 @@ Na podstawie poniższego opisu wykonaj polecenia SQL tworzące odpowiednie tabel
 
 ### Zadanie 2: Tworzenie transakcji
 
-> Na podstawie tabel `Klient` i `Faktura` z pierwszego zadania, napisz instrukcje SQL lub kod Java (z użyciem JDBC), które wykonują poniższe operacje.
-> Upewnij się, że każda operacja odbywa się w ramach transakcji (czyli z użyciem `BEGIN TRANSACTION`, `COMMIT`, `ROLLBACK` lub ich odpowiedników w JDBC).
+Na podstawie tabel `Klient` i `Faktura` z pierwszego zadania, napisz instrukcje SQL lub kod Java (z użyciem JDBC), które wykonują poniższe operacje.
+Upewnij się, że każda operacja odbywa się w ramach transakcji (czyli z użyciem `BEGIN TRANSACTION`, `COMMIT`, `ROLLBACK` lub ich odpowiedników w JDBC).
 
 1. Napisz kod (SQL lub Java z JDBC), który:
    - Dodaje określoną liczbę klientów (np. 2) do tabeli Klient, z nazwami podanymi przez użytkownika.
