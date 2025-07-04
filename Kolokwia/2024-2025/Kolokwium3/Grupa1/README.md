@@ -26,8 +26,6 @@
 | id_salonu | int (PK)     |
 | miasto    | varchar(100) |
 
----
-
 ## Zadanie 1
 
 Przygotuj skrypt SQL, który:
