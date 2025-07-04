@@ -4,7 +4,9 @@ To repozytorium jest zbiorem zadań rozwiązywanych podczas laboratoriów oraz k
 
 Zadania zostały rozwiązane przy pomocy [Transact-SQL](https://pl.wikipedia.org/wiki/Transact-SQL), języka [Python](https://www.python.org/) oraz biblioteki [pymssql](https://www.pymssql.org/).
 
-Zawartość repozytorium:
+**_Aktualizacja:_** Zawartość repozytorium została zaktualizowana o materiały z semestru letniego roku akademickiego 2024-2025.
+
+## Zawartość repozytorium:
 
 - Laboratoria:
   - Lab04: [Ćwiczenie zapytań na bazie Northwind - zapytania SELECT](https://github.com/adamgracikowski/Databases/tree/main/Laboratoria/Lab04)
@@ -111,3 +113,5 @@ Zawartość repozytorium:
   - Hard: [Hard SQL problems](https://github.com/adamgracikowski/Databases/tree/main/Leetcode/Hard)
     - [601. Human Traffic of Stadium](https://leetcode.com/problems/human-traffic-of-stadium)
     - [262. Trips and Users](https://leetcode.com/problems/trips-and-users)
+
+> Podziękowania dla [Miłosz Zieliński](https://github.com/zielinskim04) za udostępnienie i zgromadzenie materiałów z roku akademickiego 2024–2025. 😎
