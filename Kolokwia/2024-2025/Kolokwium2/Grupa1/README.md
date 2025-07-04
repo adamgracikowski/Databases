@@ -23,3 +23,8 @@ Upewnij się, że każda operacja odbywa się w ramach transakcji (czyli z użyc
 3. Napisz zapytania SQL lub kod Java, który:
    - Wyświetlają wszystkie rekordy z tabel `Klient` i `Faktura`.
    - W przypadku faktur pokaż również nazwę klienta (wykorzystaj `JOIN`).
+4. Stwórz transakcję, która:
+   - Zwiększa kwotę netto wszystkich faktur o 100.
+   - Dla każdego klienta dodaje nową fakturę z kwotą 1000 i aktualną datą.
+   - Wyświetla nowe dane po wykonaniu transakcji.
+   - Umożliwia cofnięcie transakcji w razie błędu.
